@@ -56,6 +56,10 @@ createApp({
                 //altrimenti porto la posizione alla lunghezza di slides -1
                 this.itemPosition = this.slides.length - 1;  
                 }
-                }
+        },
+        showCurrentSlide: function(currentSlidePosition){
+            //la posizione viene settata all'indece dell'elemento corrente
+            this.itemPosition = currentSlidePosition;
+        }
             }
 }).mount("#app");
