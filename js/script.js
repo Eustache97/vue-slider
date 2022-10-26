@@ -61,5 +61,9 @@ createApp({
             //la posizione viene settata all'indece dell'elemento corrente
             this.itemPosition = currentSlidePosition;
         }
-            }
+     
+    },
+    created: function(){
+       const autoplay = setInterval(this.showNext, 3000);
+    }
 }).mount("#app");
