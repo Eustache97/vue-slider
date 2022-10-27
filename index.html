@@ -30,7 +30,9 @@
                     <div class="thumb" 
                     v-for="(element, index) in slides"
                     :class="itemPosition === index ? 'active' : ''"
-                    @click="showCurrentSlide(index)">
+                    @click="showCurrentSlide(index)"
+                    @mouseOver="stopAutoplay(index)"
+                    @mouseLeave="startAutoplay">
                         <img :src="element.image" :alt="element.title"/>
                     </div>
                     <!--<div class="thumb">

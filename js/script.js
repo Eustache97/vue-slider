@@ -31,12 +31,13 @@ createApp({
                     text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
                 }
             ],
-            itemPosition: 0
+            itemPosition: 0,
+            autoplay: ""
         };
-        
+
     },
     methods: {
-        
+
         showNext: function(){
             //se la posizione attuale è minore della lunghezza di slides -1
             if(this.itemPosition < this.slides.length - 1){
@@ -44,7 +45,7 @@ createApp({
                 this.itemPosition++;
             } else{
                 //altrimenti porto la posizione sa 0
-                this.itemPosition = 0;  
+                this.itemPosition = 0;
                 }
         },
         showPrev: function(){
@@ -54,16 +55,26 @@ createApp({
                 this.itemPosition--;
             } else{
                 //altrimenti porto la posizione alla lunghezza di slides -1
-                this.itemPosition = this.slides.length - 1;  
+                this.itemPosition = this.slides.length - 1;
                 }
         },
         showCurrentSlide: function(currentSlidePosition){
             //la posizione viene settata all'indece dell'elemento corrente
             this.itemPosition = currentSlidePosition;
-        }
-     
-    },
+        },
+        startAutoplay: function(){
+            //l'autoplay viene settata a setInterval
+            this.autoplay = setInterval(this.showNext, 3000);
+        },
+        stopAutoplay: function(currentSlidePosition){
+            //la posizione viene settata all'indece dell'elemento corrente
+            this.itemPosition = currentSlidePosition;
+            //il setInterval viene annullato
+            clearInterval(this.autoplay);
+            }
+        },
     created: function(){
-       const autoplay = setInterval(this.showNext, 3000);
+       this.autoplay = setInterval(this.showNext, 3000);
     }
+
 }).mount("#app");
